@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>ToDo</title>
+	<script src="static/javascript/delete.js"></script>
+	<script src="static/javascript/jquery-1.9.1.min.js"></script>
+	<script>
+	$(document).on("click", "img", function() {
+		image = $(this).attr("src");
+	    store_click(image);
+	});
+	$(document).on("click", "a", function() {
+		link = $(this).attr("href");
+	    store_click(link);
+	});
+	</script>
+</head>
+<body onload="grabUserInfo()">
+	<p id="user_info_display"></p>
+	<font face="Helvetica">ToDo:</font>
+	<br>
+	<form action="/list" method="get">
+		<p>
+		<input type="text" name="item" size=50>
+        <input type="submit" value="Input ToDo Item">
+    </form>
+{%for item in list_of_items%}
+<img src="static/images/checkmark.jpg" onClick='completeItem("item-{{forloop.counter}}")'>
+<img src="static/images/trashcan.jpg" onClick='deleteItem("{{item}}")' width="20">
+<span id="item-{{forloop.counter}}">{{item}}</span><br>
+{%endfor%}
+<p>
+<p>
+<p>
+<a href="http://www.google.com">Link to Google</a>
+</body>
+</html>
