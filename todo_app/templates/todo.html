@@ -1,8 +1,14 @@
+<!-- Resources used:
+Django - https://www.djangoproject.com/
+Piston - https://bitbucket.org/jespern/django-piston/wiki/Home -->
+
 <html>
 <head>
     <title>ToDo</title>
+	<!-- Javascript includes -->
 	<script src="static/javascript/delete.js"></script>
 	<script src="static/javascript/jquery-1.9.1.min.js"></script>
+<!-- Capturing clicks -->
 	<script>
 	$(document).on("click", "img", function() {
 		image = $(this).attr("src");
@@ -18,11 +24,13 @@
 	<p id="user_info_display"></p>
 	<font face="Helvetica">ToDo:</font>
 	<br>
+	<!-- Form to add an item to the todo list -->
 	<form action="/list" method="get">
 		<p>
 		<input type="text" name="item" size=50>
         <input type="submit" value="Input ToDo Item">
     </form>
+<!-- Walk through the items stored in the list, display them with a checkmark (to complete) and a trashcan (to delete) -->
 {%for item in list_of_items%}
 <img src="static/images/checkmark.jpg" onClick='completeItem("item-{{forloop.counter}}")'>
 <img src="static/images/trashcan.jpg" onClick='deleteItem("{{item}}")' width="20">

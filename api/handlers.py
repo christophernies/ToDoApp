@@ -1,6 +1,7 @@
 from piston.handler import BaseHandler
 from todo_app.models import ClickData
 
+#Create a data handler class to return the data from the API
 class DataHandler(BaseHandler):
 	allowed_methods = ('GET',)
 	model = ClickData   
